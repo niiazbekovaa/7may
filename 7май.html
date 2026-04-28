@@ -1,0 +1,156 @@
+<html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шақырту</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background:#f4f1e6;
+}
+
+.container {
+    max-width:400px;
+    margin:10px auto;
+    padding:15px;
+    background:#fffdf5;
+    border:2px solid #333;
+    box-sizing:border-box;
+}
+
+.input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    box-sizing:border-box;
+}
+
+.button {
+    width:100%;
+    padding:12px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+}
+
+.invite {
+    display:none;
+    margin-top:15px;
+    border:1px dashed black;
+    padding:12px;
+}
+
+.text {
+    font-size:14px;
+}
+
+/* СЛАЙДЕР */
+.slider {
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.slides {
+    display:flex;
+    width:300%;
+    animation:slide 9s infinite;
+}
+
+.slides img {
+    width:100%;
+    object-fit:cover;
+}
+
+@keyframes slide {
+    0%,30% {transform:translateX(0);}
+    35%,65% {transform:translateX(-100%);}
+    70%,100% {transform:translateX(-200%);}
+}
+
+/* ОРНЫ + МӨР */
+.location-block {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:10px;
+}
+
+.stamp-img {
+    width:90px;
+    opacity:0;
+    transform:scale(2) rotate(-20deg);
+    transition:0.5s;
+}
+
+.stamp-show {
+    opacity:1;
+    transform:scale(1) rotate(-15deg);
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h3 style="text-align:center;">ҚАЗАҚСТАН ҚОРҒАНЫС МИНИСТРЛІГІ</h3>
+
+<input id="name" class="input" placeholder="Атыңды жаз">
+<button class="button" onclick="start()">ШАҚЫРТУ АЛУ</button>
+
+<audio id="music" src="Әскер.mp3"></audio>
+<audio id="stampSound" src="freesound_community-stamp-81635 (1).mp3"></audio>
+
+<div class="invite" id="invite">
+
+<p><b>Азамат:</b> <span id="resultName"></span></p>
+
+<p class="text">
+Сізді 7 мамыр – Отан қорғаушылар күніне арналған ерекше кешке 
+құрметпен шақырамыз!
+</p>
+
+<p><b>Күні:</b> 07.05</p>
+<p><b>Уақыты:</b> 18:00</p>
+
+<!-- ОСЫ ЖЕР ДҰРЫС -->
+<div class="location-block">
+    <p><b>Өтетін орны:</b>Самал 9Б</p>
+    <img src="approved.png" id="stamp" class="stamp-img">
+</div>
+
+<!-- ФОТО -->
+<div class="slider">
+  <div class="slides">
+    <img src="IMG_2187.JPG">
+    <img src="IMG_2181.JPG">
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function start() {
+    let name = document.getElementById("name").value;
+    document.getElementById("resultName").innerText = name;
+
+    document.getElementById("invite").style.display = "block";
+
+    document.getElementById("music").play();
+
+    setTimeout(() => {
+        document.getElementById("stamp").classList.add("stamp-show");
+        document.getElementById("stampSound").play();
+    }, 800);
+}
+</script>
+
+</body>
+</html>
